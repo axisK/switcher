@@ -8,8 +8,9 @@ Switcher is a proxy server which accepts connections and proxies based on which 
 Currently implemented is:
 
   - SSH
+  - IRC
 
-The use case is running HTTP(S) and SSH on the same port.
+The use case is running HTTP(S), SSH, and IRC on the same port.
 
 
 Usage
@@ -28,22 +29,23 @@ To get help:
     Options:
       --listen   <:80>            Server Listen Address
       --ssh      <127.0.0.1:22>   SSH Server Address
-      --default  <127.0.0.1:8080>  Default Server Address
+      --irc      <127.0.0.1:6667> SSH Server Address
+      --default  <127.0.0.1:8080> Default Server Address
 
     Examples:
-      To serve SSH(127.0.0.1:22) and HTTP(127.0.0.1:8080) on port 80
+      To serve SSH(127.0.0.1:22), IRC(127.0.0.1:6667), and HTTP(127.0.0.1:8080) on port 80
       $ switcher
 
-      To serve SSH(127.0.0.1:2222) and HTTPS(127.0.0.1:443) on port 443
-      $ switcher --listen :443 --ssh 127.0.0.1:2222 --default 127.0.0.1:443
+      To serve SSH(127.0.0.1:2222), IRC(127.0.0.1:6668), and HTTPS(127.0.0.1:443) on port 443
+      $ switcher --listen :443 --ssh 127.0.0.1:2222 --irc 127.0.0.1:6668 --default 127.0.0.1:443
 
 
 Example
 -------
 
-Run switcher on HTTP port 80, proxy to SSH on 127.0.0.1:22 and Nginx on 127.0.0.1:8080
+Run switcher on HTTP port 80, proxy to SSH on 127.0.0.1:22, ZNC on 127.0.0.1:6667, and Nginx on 127.0.0.1:8080
 
-    $ switcher --listen :80 --ssh 127.0.0.1:22 --default 127.0.0.1:8080
+    $ switcher --listen :80 --ssh 127.0.0.1:22  --irc 127.0.0.1:6667 --default 127.0.0.1:8080
 
 To test HTTP:
 
